@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toastError, toastSuccess } from '../components/common/Toast';
 
 import Menu from './header/Menu';
 import api from '../api/api';
@@ -20,7 +21,10 @@ const Registration = () => {
     })
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     return api.addUser({ ...person })
+    .then(_ => { toastSuccess('User Created!') })
+    .catch(_ => { toastError('Can not created User!') });
   }
 
   const { firstName, lastName, email, password, address, state, city, zip } = person;
