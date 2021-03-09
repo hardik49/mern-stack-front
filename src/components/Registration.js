@@ -20,7 +20,6 @@ const Registration = () => {
     })
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     return api.addUser({ ...person })
   }
 
